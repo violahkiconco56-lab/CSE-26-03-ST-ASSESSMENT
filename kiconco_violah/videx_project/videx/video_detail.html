@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{{ video.title }}</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f6f9;
+      padding: 40px;
+    }
+
+    h2 {
+      font-size: 28px;
+      color: #333;
+      margin-bottom: 10px;
+    }
+
+    .meta {
+      font-size: 14px;
+      color: #666;
+      margin-bottom: 20px;
+    }
+
+    video {
+      width: 100%;
+      max-width: 720px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    img.thumbnail {
+      width: 200px;
+      border-radius: 6px;
+      margin-bottom: 20px;
+      display: block;
+    }
+
+    p.description {
+      font-size: 16px;
+      color: #444;
+      line-height: 1.5;
+      margin-bottom: 20px;
+    }
+
+    .actions a {
+      display: inline-block;
+      margin-right: 15px;
+      font-size: 14px;
+      text-decoration: none;
+      color: red;
+    }
+
+    .actions a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <h2>{{ video.title }}</h2>
+  <div class="meta">
+    Quality: {{ video.quality }} • Published: {{ video.publish_date }} • Views: {{ video.views }}
+  </div>
+
+  <video controls{% if video.thumbnail %} poster="{{ video.thumbnail.url }}"{% endif %} preload="metadata">
+    <source src="{{ video.video_file.url }}" type="video/mp4">
+    Your browser does not support the video tag.
+    <a href="{{ video.video_file.url }}">Download video</a>
+  </video>
+
+  {% if video.thumbnail %}
+    <div class="thumbnail-card">
+      <img src="{{ video.thumbnail.url }}" alt="Thumbnail" class="thumbnail">
+    </div>
+  {% endif %}
+
+  <p class="description">{{ video.description }}</p>
+
+  <div class="actions">
+    <a href="{% url 'video_list' %}">Back to Videos</a>
+    <a href="{% url 'delete_video' video.id %}">Delete</a>
+  </div>
+</body>
+</html>

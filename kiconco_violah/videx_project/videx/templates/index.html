@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Videx Landing</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #fff; /* plain white background */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    .main {
+      text-align: center;
+    }
+
+    .logo {
+      font-size: 48px;
+      font-weight: bold;
+      color: red;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 30px;
+    }
+
+    .logo span {
+      font-size: 60px;
+      color: red;
+    }
+
+    .join-btn {
+      padding: 12px 40px;
+      border: 2px solid red;
+      color: red;
+      font-size: 18px;
+      font-weight: bold;
+      background: transparent;
+      cursor: pointer;
+      border-radius: 4px;
+      transition: 0.3s;
+      text-decoration: none;
+    }
+
+    .join-btn:hover {
+      background: red;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <div class="main">
+    <div class="logo">
+      <span>▶</span> Videx
+    </div>
+    <a href="{% url 'video_list' %}" class="join-btn">JOIN</a>
+  </div>
+</body>
+</html>
